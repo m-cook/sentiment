@@ -1,0 +1,7 @@
+require(quanteda)
+dataframe<-data.frame(text=unlist(sapply(myCorpus, '[')), stringsAsFactors=F)
+t=dfm(dataframe$text, ngrams = 1:3, verbose = FALSE, concatenator = " ")
+t1=as.matrix(t)
+write.csv(t1,"trigram1.csv")
+trigram.freq <- sort(col_sums(trigram), decreasing = TRUE)
+print(trigram.freq)
